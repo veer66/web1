@@ -1,8 +1,9 @@
 (ns web1.core
   (:require [reitit.core :as r]
-            [reitit.ring :as ring])
+            [reitit.ring :as ring]
+            [ring.adapter.jetty :refer [run-jetty]]
+            [ring.middleware.reload :refer [wrap-reload]])
   (:gen-class))
-
 
 (defn home [req]
   {:status 200
@@ -15,6 +16,9 @@
 (def router (ring/router [["/" home]
                           ["/toto" toto]]))
 
-(comment (r/match-by-path router "/toto"))
-
 (def app (ring/ring-handler router))
+
+(defn -main
+  []
+  (run-jetty (wrap-reload #'app)
+             {:port 3000}))
