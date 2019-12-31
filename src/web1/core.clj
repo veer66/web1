@@ -10,18 +10,8 @@
             [reitit.swagger-ui :as swagger-ui]
             [reitit.ring.coercion :as coercion]
             [reitit.coercion.spec]
-            [reitit.dev.pretty :as pretty]
             [reitit.ring.middleware.muuntaja :as muuntaja]
-            ;;[reitit.ring.middleware.exception :as exception]
-            ;;[reitit.ring.middleware.multipart :as multipart]
-            ;;[reitit.ring.middleware.parameters :as parameters]
-            ;;[reitit.ring.middleware.dev :as dev]
-            ;;[reitit.ring.spec :as spec]
-            ;;[spec-tools.spell :as spell]
-            ;;[ring.adapter.jetty :as jetty]
-            [muuntaja.core :as m]
-            ;;[clojure.java.io :as io]
-            )
+            [muuntaja.core :as m])
   (:import (org.postgresql.util PGobject)
            (com.zaxxer.hikari HikariDataSource))
   (:gen-class))
@@ -100,7 +90,6 @@
                         muuntaja/format-request-middleware]}}))
 
 (def app (ring/ring-handler router
-                            (swagger-ui/create-swagger-ui-handler {:path "/api-docs"})
                             (ring/create-default-handler)))
 
 (defn -main
