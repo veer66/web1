@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-postgres
 
 RUN brew install clojure/tools/clojure
 
