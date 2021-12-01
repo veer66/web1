@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
   
 vscode:
-  extension:
+  extensions:
     - betterthantomorrow.calva
 ports:
   - port: 5900
