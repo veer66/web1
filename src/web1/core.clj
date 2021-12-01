@@ -74,6 +74,9 @@
      :body (json/write-value-as-string
             {:result "OK"})}))
 
+(comment (j/execute! @ds ["INSERT INTO meta1(id, metadata) VALUES (?, ?)"
+                  10 (>jsonb {:k 10})]))
+
 (def router
   (ring/router
    [["/" {:no-doc true
